@@ -1,0 +1,76 @@
+{{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
+
+{% for field in form %}
+    {% if field.vars.name != '_token' %} 
+    <div class="mb-3">
+        {{ form_label(field, null, {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(field, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(field, {'attr': {'class': 'form-text text-danger'}}) }}
+    </div>
+    {% endif %}
+{% endfor %}
+
+{{ form_row(form._token, {'attr': {'class': 'csrf_token'}}) }} 
+
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <button class="btn btn-primary btn-lg" type="submit">{{ button_label|default('Save') }}</button>
+</div>
+
+{{ form_end(form) }}
+
+
+<style>
+    .needs-validation .form-control {
+        display: block;
+        width: 100%;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #495057;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+    .needs-validation .form-control:focus {
+        border-color: #80bdff;
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+
+    .needs-validation .form-label {
+        margin-bottom: 0.5rem;
+    }
+
+    .needs-validation .form-text.text-danger {
+        color: #dc3545;
+    }
+
+    .needs-validation .btn.btn-primary.btn-lg {
+        padding: 0.5rem 1rem;
+        font-size: 1.25rem;
+        line-height: 1.5;
+        border-radius: 0.3rem;
+    }
+
+    .d-grid {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    .gap-2 {
+        grid-gap: 0.5rem;
+    }
+
+    .d-md-flex {
+        display: flex;
+    }
+
+    .justify-content-md-end {
+        justify-content: flex-end;
+    }
+    .form-container .csrf_token {
+        display: none;
+    }
+</style>

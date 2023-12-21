@@ -1,0 +1,34 @@
+<form method="post" action="{{ path('app_habitant_delete', {'id': habitant.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ habitant.id) }}">
+    <button type="submit" class="btn btn-delete">
+    <i class="fa fa-trash"></i> Delete
+    </button>
+</form>
+{% block stylesheets %}
+<style>
+.btn-delete {
+    padding: 8px 15px;
+    background-color: #dc3545; /* Couleur rouge pour l'action de suppression */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-delete:hover,
+.btn-delete:focus {
+    background-color: #c82333; /* Un rouge légèrement plus foncé pour le survol */
+    outline: none; /* Supprime le contour lorsque le bouton est cliqué ou sélectionné */
+}
+
+.btn-delete:active {
+    background-color: #bd2130; /* Un rouge encore plus foncé pour l'effet cliqué */
+    transform: translateY(1px); /* Effet d'appui léger */
+}
+.form-container .csrf_token {
+        display: none;
+    }
+</style>
+{% endblock %}
+

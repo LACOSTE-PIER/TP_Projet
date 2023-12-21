@@ -1,0 +1,11 @@
+{
+  "entrypoints": {
+    "app": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors-node_modules_react-dom_client_js-node_modules_core-js_modules_es_array_for-each_js-no-9f38d5.js",
+        "/build/app.js"
+      ]
+    }
+  }
+}

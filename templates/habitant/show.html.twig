@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de l'Habitant{% endblock %}
+
+{% block body %}
+<div class="habitant-container">
+    <div class="habitant-card">
+        <h2>Détails de l'Habitant</h2>
+        <p><strong>Nom :</strong> {{ habitant.nomFamille }}</p>
+        <p><strong>Prénom :</strong> {{ habitant.prenomIndividu }}</p>
+        <p><strong>Date de Naissance :</strong> {{ habitant.dateDeNaissance ? habitant.dateDeNaissance|date('Y-m-d') : 'Non renseignée' }}</p>
+        <p><strong>Genre :</strong> {{ habitant.genreIdentifie }}</p>
+        <p><strong>Adresse :</strong> {{ habitant.habitation ? habitant.habitation.adresse : 'Non renseignée' }}</p>
+        <a href="{{ path('app_habitant_edit', {'id': habitant.id}) }}" class="btn btn-primary">Modifier</a>
+    </div>
+    
+    <div class="actions">
+        {{ include('habitant/_delete_form.html.twig') }}
+    </div>
+</div>
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+  .habitant-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        margin: 40px auto;
+        max-width: 800px;
+    }
+    .habitant-card {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        border: none;
+        width: 100%;
+        position: relative; 
+    }
+    .habitant-card h2 {
+        color: #0056b3;
+        margin-bottom: 16px;
+        text-align: center;
+    }
+    .habitant-card p {
+        margin-left: 20px;
+        font-size: 1.1em;
+        line-height: 1.5;
+    }
+    .button-container {
+        position: absolute; 
+        right: 200px; /* Align to the right side */
+        top: 20px; /* Position from the top */
+    }
+    .actions {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .btn {
+        padding: 10px 15px;
+        font-size: 1rem;
+        border-radius: 4px;
+        text-decoration: none;
+        color: #fff;
+        background-color: #007bff;
+        border: 1px solid #007bff;
+        transition: background-color 0.2s;
+        margin: 0 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    }
+    .btn-outline-secondary {
+        background-color: transparent;
+        color: #6c757d;
+        border-color: #6c757d;
+    }
+    .btn-outline-secondary:hover {
+        background-color: #6c757d;
+        color: #fff;
+    }
+</style>
+{% endblock %}

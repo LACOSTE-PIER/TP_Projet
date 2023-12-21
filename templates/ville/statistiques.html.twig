@@ -1,0 +1,15 @@
+
+{# templates/ville/statistiques.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Statistiques de la ville{% endblock %}
+
+{% block body %}
+    <h1>Statistiques de la ville {{ nomVille }}</h1>
+    <div>
+        <p>Moyenne d'âge: {{ moyenneAge }}</p>
+        <p>Nombre d'habitants : {{ nbHabitants }} </p>
+        <p>Surface totale habitable : {{ surfaceTotale }} m²</p>
+    </div>
+{% endblock %}

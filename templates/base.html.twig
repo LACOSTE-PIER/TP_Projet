@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/v4-shims.css">
+    
+    <meta charset="UTF-8">
+    <title>DD-Manager</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container {
+            width: 90%;
+            margin: 0 auto;
+        }
+        footer {
+            background-color: #555;
+            color: #ccc; 
+            text-align: center;
+            padding: 0.5em 0; 
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            font-size: 0.8em; 
+        }
+        header {
+            background-color: #555; 
+            color: #ccc;
+            text-align: center;
+            padding: 0.6em 0;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 3em; /* Taille de la police du titre */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Ombre portée pour donner de la profondeur */
+            padding: 0.5em 0; /* Espacement autour du titre */
+            font-weight: bold; /* Rendre le texte plus gras */
+            letter-spacing: 5px; /* Espacement entre les lettres */
+        }
+        nav {
+            background-color: #555; /* Couleur différente pour le bandeau de navigation */
+        }
+        nav ul {
+            padding: 0;
+            list-style: none;
+            text-align: left;
+            margin: 0; /* Supprimez la marge par défaut */
+        }
+        nav ul li {
+            display: inline-block;
+            margin: 0; /* Pas de marge entre les éléments de la liste pour qu'ils soient collés */
+        }
+        nav ul li a {
+            display: block;
+            padding: 15px 20px; /* Espacement autour du texte */
+            background-color: #555; /* Même couleur que le `nav` pour les onglets */
+            color: white; /* Couleur du texte */
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s; /* Transition pour le survol */
+        }
+        nav ul li a:hover {
+            background-color: #007BFF; /* Couleur au survol */
+            
+        }
+        .content {
+            margin-top: 30px;
+        }
+        
+        {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+        
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Dragodindes de Saint Denis en Val</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ path('app_habitant_index') }}">Accueil</a></li>
+                <li><a href="{{ path('app_habitant_new') }}">Ajouter une dragodinde</a></li>
+                <li><a href="{{ path('app_habitation_new') }}">Ajouter un enclos</a></li>
+                <li><a href="{{ path('app_habitation_index') }}">Voir les enclos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="content">
+            {% block body %}{% endblock %}
+              
+        </div>
+        
+        
+    </div>
+
+    <footer>
+        <p>© 2023 Guilde de Saint Denis en Val</p>
+    </footer>
+   {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %} 
+    
+</body>
+</html>

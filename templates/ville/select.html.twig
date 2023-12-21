@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Choisir une ville</h1>
+    {{ form_start(form) }}
+        {{ form_widget(form.ville) }}
+        <button type="submit" class="btn btn-primary">Voir Statistiques</button>
+    {{ form_end(form) }}
+{% endblock %}
+

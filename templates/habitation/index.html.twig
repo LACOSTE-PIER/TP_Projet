@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Habitations{% endblock %}
+
+{% block body %}
+    <h1>Liste des habitations :</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Adresse</th>
+                <th>Type d'habitation</th>
+                <th>Surface</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for habitation in habitations %}
+            <tr>
+                <td>{{ habitation.id }}</td>
+                <td>{{ habitation.adresse }}</td>
+                <td>{{ habitation.TypeHabitation }}</td>
+                <td>{{ habitation.SurfaceHabitable }}</td>
+                
+                <td>
+                    <a href="{{ path('app_habitation_show', {'id': habitation.id}) }}" class="btn btn-info">Détails</a>
+                    <form method="post" action="{{ path('app_habitation_delete', {'id': habitation.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette habitation ?');" style="display: inline-block;">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ habitation.id) }}">
+                        <button type="submit" class="btn btn-delete">
+                            <i class="fa fa-trash"></i> Supprimer
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Aucune habitation trouvée</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .table {
+        width: 80%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .table th {
+        background-color: #0056b3;
+        color: white;
+        padding: 12px;
+        text-align: left;
+    }
+    .table td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    .table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    .table tr:hover {
+        background-color: #ddd;
+    }
+    .btn {
+        text-decoration: none;
+        padding: 6px 12px;
+        border: none;
+        border-radius: 4px;
+        transition: background-color 0.2s ease-in-out;
+    }
+    .btn-info {
+        background-color: #17a2b8;
+        color: white;
+    }
+    .btn-info:hover {
+        background-color: #138496;
+    }
+    .btn-delete {
+        background-color: #007bff;
+        color: white;
+    }
+    .btn-delete:hover {
+        background-color: #0069d9;
+    }
+    a.btn:not(:last-child) {
+        margin-right: 5px;
+    }
+</style>
+{% endblock %}
